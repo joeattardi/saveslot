@@ -3,6 +3,8 @@ import { authClient } from '../lib/auth-client';
 import { useNavigate } from 'react-router';
 import classes from './Login.module.css';
 import logo from '../assets/images/logo.svg';
+import Input from '../components/ui/Input';
+import Button from '../components/ui/Button';
 
 interface LoginFormData {
     email: string;
@@ -46,21 +48,21 @@ export default function Login() {
                 <img src={logo} alt="QuestLog Logo" className={classes.logo} />
                 <h1>Log In</h1>
                 {errors.root?.loginError && <span>{errors.root.loginError.message}</span>}
-                <input
+                <Input
                     type="email"
                     placeholder="Email"
                     {...register('email', { required: true })}
                 />
                 {errors.email && <span>Email is required</span>}
-                <input
+                <Input
                     type="password"
                     placeholder="Password"
                     {...register('password', { required: true })}
                 />
                 {errors.password && <span>Password is required</span>}
-                <button type="submit" disabled={isSubmitting}>
+                <Button type="submit" disabled={isSubmitting}>
                     Log In
-                </button>
+                </Button>
             </form>
         </div>
     );

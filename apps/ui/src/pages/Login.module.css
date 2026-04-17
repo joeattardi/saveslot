@@ -8,6 +8,7 @@
 .login-form {
     display: flex;
     flex-direction: column;
+    width: 320px;
     gap: 16px;
 
     h1 {
