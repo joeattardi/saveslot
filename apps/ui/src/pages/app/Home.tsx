@@ -1,36 +1,11 @@
-import { useLoaderData, useNavigate } from 'react-router';
-import { authClient } from '../../lib/auth-client';
+import { useRouteLoaderData } from 'react-router';
 import classes from './Home.module.css';
-import Button from '../../components/ui/Button';
-import logo from '../../assets/images/logo.svg';
 
 export default function Home() {
-    const data = useLoaderData();
-    const navigate = useNavigate();
-
-    async function logout() {
-        await authClient.signOut({
-            fetchOptions: {
-                onSuccess() {
-                    navigate('/');
-                }
-            }
-        });
-    }
+    const data = useRouteLoaderData('app');
 
     return (
         <main className={classes.container}>
-            <header className={classes.topbar}>
-                <div className={classes.brandRow}>
-                    <img src={logo} alt="QuestLog Logo" className={classes.logo} />
-                    <div>
-                        <p className={classes.productName}>QuestLog</p>
-                        <p className={classes.pageLabel}>Backlog Dashboard</p>
-                    </div>
-                </div>
-                <Button onClick={logout}>Log Out</Button>
-            </header>
-
             <section className={classes.heroCard}>
                 <p className={classes.eyebrow}>Welcome back</p>
                 <h1>{data.user.name}</h1>
