@@ -1,5 +1,5 @@
 import { redirect } from 'react-router';
-import { authClient } from './auth-client';
+import { authClient } from '../lib/auth-client';
 
 export async function protectedRouteLoader() {
     try {

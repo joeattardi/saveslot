@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router';
-import { guestRouteLoader, protectedRouteLoader } from '../lib/auth-loader.ts';
+import { guestRouteLoader, protectedRouteLoader } from './auth-loader.ts';
 import LandingPage from '../pages/LandingPage.tsx';
 import Login from '../pages/Login.tsx';
 import Home from '../pages/app/Home.tsx';
