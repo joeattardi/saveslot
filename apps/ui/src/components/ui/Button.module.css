@@ -1,9 +1,35 @@
 .button {
-    background: blue;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
+    background: var(--gradient-button);
+    color: var(--color-white);
+    padding: 0.78rem 1.05rem;
+    border: 1px solid rgb(0 0 0 / 0%);
+    border-radius: var(--radius-sm);
+    font-size: 0.96rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
     cursor: pointer;
+    transition:
+        transform 130ms ease,
+        box-shadow 130ms ease,
+        filter 130ms ease;
+}
+
+.button:hover:enabled {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 26px rgb(165 75 31 / 25%);
+    filter: saturate(108%);
+}
+
+.button:active:enabled {
+    transform: translateY(0);
+}
+
+.button:focus-visible {
+    outline: none;
+    box-shadow: var(--ring-focus);
+}
+
+.button:disabled {
+    opacity: 0.7;
+    cursor: wait;
 }
