@@ -1,6 +1,7 @@
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import { authRoutes } from './routes/auth-routes.js';
+import { userRoutes } from './routes/user-routes.js';
 
 const HOST = process.env.HOST ?? '0.0.0.0';
 const PORT = Number(process.env.PORT ?? 3000);
@@ -22,6 +23,7 @@ app.register(cors, {
 });
 
 app.register(authRoutes);
+app.register(userRoutes);
 
 try {
     await app.listen({ host: HOST, port: PORT });
