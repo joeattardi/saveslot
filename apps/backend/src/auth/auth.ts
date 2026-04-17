@@ -10,10 +10,7 @@ export const auth = betterAuth({
         schema: authSchema,
         usePlural: true
     }),
-    plugins: [
-        username(),
-        admin()
-    ],
+    plugins: [username(), admin()],
     emailAndPassword: {
         enabled: true
     },

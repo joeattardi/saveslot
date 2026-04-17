@@ -28,7 +28,7 @@ export default function Login() {
             if (loginResponse.error) {
                 console.error('Login failed', loginResponse.error);
                 setError('root.loginError', {
-                   message: loginResponse.error.message || 'Login failed'
+                    message: loginResponse.error.message || 'Login failed'
                 });
             } else {
                 navigate('/app');
@@ -43,11 +43,21 @@ export default function Login() {
             <h1>Log In</h1>
             <form onSubmit={handleSubmit(login)} noValidate>
                 {errors.root?.loginError && <span>{errors.root.loginError.message}</span>}
-                <input type="email" placeholder="Email" {...register('email', { required: true })} />
+                <input
+                    type="email"
+                    placeholder="Email"
+                    {...register('email', { required: true })}
+                />
                 {errors.email && <span>Email is required</span>}
-                <input type="password" placeholder="Password" {...register('password', { required: true })} />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    {...register('password', { required: true })}
+                />
                 {errors.password && <span>Password is required</span>}
-                <button type="submit" disabled={isSubmitting}>Log In</button>
+                <button type="submit" disabled={isSubmitting}>
+                    Log In
+                </button>
             </form>
         </main>
     );

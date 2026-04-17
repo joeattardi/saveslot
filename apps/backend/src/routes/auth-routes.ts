@@ -14,7 +14,7 @@ export async function authRoutes(fastify: FastifyInstance) {
                 const authRequest = new Request(url.toString(), {
                     method: request.method,
                     headers,
-                    ...(request.body ? { body: JSON.stringify(request.body) } : {}),
+                    ...(request.body ? { body: JSON.stringify(request.body) } : {})
                 });
 
                 const authResponse = await auth.handler(authRequest);

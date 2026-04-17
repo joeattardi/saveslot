@@ -12,8 +12,6 @@ await auth.api.signUpEmail({
     }
 });
 
-await database.update(users)
-    .set({ role: 'admin' })
-    .where(eq(users.username, 'jattardi'));
+await database.update(users).set({ role: 'admin' }).where(eq(users.username, 'jattardi'));
 
 console.log('Test user created and set as admin');
