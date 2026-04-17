@@ -5,16 +5,29 @@
     "type": "module",
     "main": "dist/index.js",
     "scripts": {
-        "dev": "tsx watch src/index.ts",
+        "dev": "tsx watch --env-file=.env src/index.ts",
         "build": "tsc",
         "start": "node dist/index.js",
-        "typecheck": "tsc --noEmit"
+        "typecheck": "tsc --noEmit",
+        "db:generate": "drizzle-kit generate",
+        "db:migrate": "drizzle-kit migrate",
+        "db:seed": "npx tsx --env-file=.env seed-test-user.ts",
+        "auth:generate": "auth generate --output src/database/auth-schema.ts -y"
     },
     "dependencies": {
-        "fastify": "^5.8.5"
+        "@fastify/cors": "^11.2.0",
+        "better-auth": "^1.6.5",
+        "dotenv": "^17.4.2",
+        "drizzle-orm": "^0.45.2",
+        "fastify": "^5.8.5",
+        "pg": "^8.20.0"
     },
     "devDependencies": {
+        "@opentelemetry/api": "^1.9.1",
         "@types/node": "^25.6.0",
+        "@types/pg": "^8.20.0",
+        "auth": "^1.6.5",
+        "drizzle-kit": "^0.31.10",
         "tsx": "^4.21.0",
         "typescript": "^6.0.3"
     }

@@ -1,19 +1,37 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { authClient } from './lib/auth-client';
 
 export function App() {
-    const [message, setMessage] = useState<string>('Loading...');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-    useEffect(() => {
-        fetch('/api/hello')
-            .then((res) => res.json() as Promise<{ message: string }>)
-            .then((data) => setMessage(data.message))
-            .catch(() => setMessage('Failed to reach backend'));
-    }, []);
+    async function login(event: React.SubmitEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        const { data, error } = await authClient.signIn.email({
+            email,
+            password,
+            rememberMe: true,
+            callbackURL: '/'
+        });
+
+        console.log('Login response:', { data, error });
+
+        if (error) {
+            alert(`Login failed: ${error.message}`);
+        } else {
+            alert('Login successful!');
+        }
+    }
 
     return (
         <main>
             <h1>Questlog</h1>
-            <p>Backend says: {message}</p>
+            <form onSubmit={login}>
+                <input type="email" name="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input type="password" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <button type="submit">Login</button>
+            </form>
         </main>
     );
 }
