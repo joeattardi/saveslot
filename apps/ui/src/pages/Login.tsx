@@ -1,8 +1,8 @@
 import { Button, Callout } from '@radix-ui/themes';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
-import logo from '../assets/images/logo.svg';
 import controllerImg from '../assets/images/ps-controller.jpg';
+import Logo from '../components/Logo';
 import Input from '../components/ui/Input';
 import { authClient } from '../lib/auth-client';
 import classes from './Login.module.css';
@@ -68,7 +68,7 @@ export default function Login() {
             <div className={classes.formPanel}>
                 <form className={classes.loginForm} onSubmit={handleSubmit(login)} noValidate>
                     <div className={classes.brandBlock}>
-                        <img src={logo} alt="SaveSlot Logo" className={classes.logo} />
+                        <Logo style="dark" />
                     </div>
 
                     <header className={classes.header}>

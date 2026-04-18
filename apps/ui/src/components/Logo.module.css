@@ -1,0 +1,53 @@
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.logo {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-soft);
+}
+
+.logo-small {
+    width: 32px;
+    height: 32px;
+}
+
+.logo-medium {
+    width: 52px;
+    height: 52px;
+}
+
+.logo-large {
+    width: 72px;
+    height: 72px;
+}
+
+.brand-text {
+    color: #ffffff;
+    font-size: 1.75rem;
+    font-weight: 800;
+    text-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
+    font-family: 'Orbitron Variable', sans-serif;
+    letter-spacing: 0.04em;
+}
+
+.brand-text-dark {
+    color: var(--color-ink-900);
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+}
+
+.brand-text-small {
+    font-size: 1.25rem;
+}
+
+.brand-text-medium {
+    font-size: 1.75rem;
+}
+
+.brand-text-large {
+    font-size: 2.25rem;
+}

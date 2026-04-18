@@ -88,26 +88,7 @@
 }
 
 .brand-row {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-3);
     margin-bottom: var(--space-8);
-}
-
-.logo {
-    width: 52px;
-    height: 52px;
-    border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-soft);
-}
-
-.brand-text {
-    color: #ffffff;
-    font-size: 1.75rem;
-    font-weight: 800;
-    text-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
-    font-family: 'Orbitron Variable', sans-serif;
-    letter-spacing: 0.04em;
 }
 
 .hero h1 {

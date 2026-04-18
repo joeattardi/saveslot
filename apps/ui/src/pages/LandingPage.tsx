@@ -2,6 +2,7 @@ import { NavLink } from 'react-router';
 import classes from './LandingPage.module.css';
 import logo from '../assets/images/logo.svg';
 import controllerImg from '../assets/images/controller.jpg';
+import Logo from '../components/Logo';
 
 export default function LandingPage() {
     return (
@@ -22,8 +23,7 @@ export default function LandingPage() {
 
                 <div className={classes.heroContent}>
                     <div className={classes.brandRow}>
-                        <img src={logo} alt="SaveSlot Logo" className={classes.logo} />
-                        <p className={classes.brandText}>SaveSlot</p>
+                        <Logo />
                     </div>
 
                     <h1>Your game collection, finally done right.</h1>
