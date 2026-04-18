@@ -58,7 +58,7 @@ export default function Login() {
 
             <form className={classes.loginForm} onSubmit={handleSubmit(login)} noValidate>
                 <div className={classes.brandBlock}>
-                    <img src={logo} alt="QuestLog Logo" className={classes.logo} />
+                    <img src={logo} alt="SaveSlot Logo" className={classes.logo} />
                 </div>
 
                 <header className={classes.header}>

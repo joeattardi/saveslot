@@ -1,6 +1,7 @@
 @import './theme.css';
 @import '@fontsource-variable/figtree';
 @import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/orbitron';
 @import '@radix-ui/themes/styles.css';
 
 body {

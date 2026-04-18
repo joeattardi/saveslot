@@ -9,8 +9,8 @@ export default function Header() {
     return (
         <header className={classes.header}>
             <NavLink to="/app" className={classes.titleLink}>
-                <img src={logo} alt="QuestLog Logo" className={classes.logo} />
-                <h1 className={classes.productName}>QuestLog</h1>
+                <img src={logo} alt="SaveSlot Logo" className={classes.logo} />
+                <h1 className={classes.productName}>SaveSlot</h1>
             </NavLink>
             <div className={classes.topNav}>
                 <Button><Plus /> Add Game</Button>

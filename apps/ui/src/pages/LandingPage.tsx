@@ -10,8 +10,8 @@ export default function LandingPage() {
 
             <section className={classes.hero}>
                 <div className={classes.brandRow}>
-                    <img src={logo} alt="QuestLog Logo" className={classes.logo} />
-                    <p className={classes.brandText}>QuestLog</p>
+                    <img src={logo} alt="SaveSlot Logo" className={classes.logo} />
+                    <p className={classes.brandText}>SaveSlot</p>
                 </div>
 
                 <h1>Your campaign journal, finally done right.</h1>
@@ -22,7 +22,7 @@ export default function LandingPage() {
 
                 <div className={classes.ctaRow}>
                     <NavLink to="/login" className={classes.primaryCta}>
-                        Enter QuestLog
+                        Enter SaveSlot
                     </NavLink>
                     <a
                         href="#features"

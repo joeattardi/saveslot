@@ -22,10 +22,11 @@
 
 .product-name {
     color: var(--color-ink-900);
-    font-size: 0.96rem;
+    font-size: 1.25rem;
     font-weight: 800;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+    font-family: 'Orbitron Variable', sans-serif;
+    letter-spacing: 0.04em;
 }
 
 .top-nav {

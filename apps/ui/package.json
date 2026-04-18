@@ -1,5 +1,5 @@
 {
-    "name": "@questlog/ui",
+    "name": "@saveslot/ui",
     "version": "1.0.0",
     "private": true,
     "type": "module",
@@ -12,6 +12,7 @@
     "dependencies": {
         "@fontsource-variable/figtree": "^5.2.10",
         "@fontsource-variable/fraunces": "^5.2.8",
+        "@fontsource-variable/orbitron": "^5.2.8",
         "@radix-ui/themes": "^3.3.0",
         "better-auth": "^1.6.5",
         "phosphor-react": "^1.4.1",
