@@ -12,7 +12,9 @@ export default function Header() {
                 <Logo style="dark" size="small" />
             </NavLink>
             <div className={classes.topNav}>
-                <Button><Plus /> Add Game</Button>
+                <Button asChild>
+                    <NavLink to="/add"><Plus /> Add Game</NavLink>
+                </Button>
                 <UserMenu />
             </div>
         </header>
