@@ -2,6 +2,7 @@ import { Button, Callout } from '@radix-ui/themes';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import logo from '../assets/images/logo.svg';
+import controllerImg from '../assets/images/ps-controller.jpg';
 import Input from '../components/ui/Input';
 import { authClient } from '../lib/auth-client';
 import classes from './Login.module.css';
@@ -53,53 +54,63 @@ export default function Login() {
 
     return (
         <div className={classes.container}>
-            <div className={classes.backdropShapeOne} aria-hidden="true" />
-            <div className={classes.backdropShapeTwo} aria-hidden="true" />
+            <div className={classes.heroPanel}>
+                <img src={controllerImg} alt="" className={classes.heroImage} />
+                <div className={classes.heroGlow} aria-hidden="true" />
+                <small className={classes.attribution}>
+                    Photo by{' '}
+                    <a href="https://unsplash.com/@michal_ilenda?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Michal Ilenda</a>
+                    {' '}on{' '}
+                    <a href="https://unsplash.com/photos/black-sony-ps-4-game-controller-UzwsrV3bFdU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+                </small>
+            </div>
 
-            <form className={classes.loginForm} onSubmit={handleSubmit(login)} noValidate>
-                <div className={classes.brandBlock}>
-                    <img src={logo} alt="SaveSlot Logo" className={classes.logo} />
-                </div>
+            <div className={classes.formPanel}>
+                <form className={classes.loginForm} onSubmit={handleSubmit(login)} noValidate>
+                    <div className={classes.brandBlock}>
+                        <img src={logo} alt="SaveSlot Logo" className={classes.logo} />
+                    </div>
 
-                <header className={classes.header}>
-                    <h1>Welcome back!</h1>
-                </header>
+                    <header className={classes.header}>
+                        <h1>Welcome back!</h1>
+                        <p>Sign in to your SaveSlot account</p>
+                    </header>
 
-                {errors.root?.loginError && (
-                    <Callout.Root color="red">
-                        <Callout.Text>{errors.root.loginError.message}</Callout.Text>
-                    </Callout.Root>
-                    // <span className={classes.errorBanner}>{errors.root.loginError.message}</span>
-                )}
+                    {errors.root?.loginError && (
+                        <Callout.Root color="red">
+                            <Callout.Text>{errors.root.loginError.message}</Callout.Text>
+                        </Callout.Root>
+                    )}
 
-                <label className={classes.field}>
-                    <span>Email</span>
-                    <Input
-                        control={control}
-                        rules={{ required: 'Email is required' }}
-                        name="email"
-                        type="email"
-                        placeholder="you@example.com"
-                    />
-                </label>
-                {errors.email && <span className={classes.fieldError}>{errors.email.message}</span>}
+                    <label className={classes.field}>
+                        <span>Email</span>
+                        <Input
+                            control={control}
+                            rules={{ required: 'Email is required' }}
+                            name="email"
+                            type="email"
+                            placeholder="you@example.com"
+                        />
+                    </label>
+                    {errors.email && <span className={classes.fieldError}>{errors.email.message}</span>}
 
-                <label className={classes.field}>
-                    <span>Password</span>
-                    <Input
-                        control={control}
-                        rules={{ required: 'Password is required' }}
-                        name="password"
-                        type="password"
-                        placeholder="Enter your password"
-                    />
-                </label>
-                {errors.password && <span className={classes.fieldError}>{errors.password.message}</span>}
+                    <label className={classes.field}>
+                        <span>Password</span>
+                        <Input
+                            control={control}
+                            rules={{ required: 'Password is required' }}
+                            name="password"
+                            type="password"
+                            placeholder="Enter your password"
+                        />
+                    </label>
+                    {errors.password && <span className={classes.fieldError}>{errors.password.message}</span>}
 
-                <Button type="submit" loading={isSubmitting}>
-                    {isSubmitting ? 'Signing in...' : 'Log In'}
-                </Button>
-            </form>
+                    <Button type="submit" loading={isSubmitting}>
+                        {isSubmitting ? 'Signing in...' : 'Log In'}
+                    </Button>
+                </form>
+            </div>
         </div>
     );
 }

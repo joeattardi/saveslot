@@ -1,64 +1,128 @@
+/* ── Split layout ─────────────────────────────────────── */
 .container {
     position: relative;
+    display: flex;
     min-height: 100vh;
+    overflow: hidden;
+    background: #0e1117;
+}
+
+/* ── Left hero panel ─────────────────────────────────── */
+.hero-panel {
+    position: relative;
+    flex: 1 1 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--space-10) var(--space-4);
-    background: var(--gradient-app);
     overflow: hidden;
 }
 
-.backdrop-shape-one,
-.backdrop-shape-two {
+.hero-image {
     position: absolute;
-    border-radius: 999px;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* subtle dark vignette over the image */
+.hero-panel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 50% 50%, transparent 40%, rgb(14 17 23 / 55%) 100%),
+        linear-gradient(to right, transparent 60%, #0e1117 100%);
     pointer-events: none;
-    filter: blur(0.5px);
 }
 
-.backdrop-shape-one {
-    width: 380px;
-    height: 380px;
-    background: radial-gradient(circle at center, rgb(214 108 56 / 30%) 0%, rgb(214 108 56 / 0%) 70%);
-    top: -80px;
-    right: -110px;
+/* floating glow that echoes the controller light bar */
+.hero-glow {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgb(60 130 246 / 25%) 0%, transparent 70%);
+    top: 30%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 1;
 }
 
-.backdrop-shape-two {
-    width: 460px;
-    height: 460px;
-    background: radial-gradient(circle at center, rgb(31 163 154 / 24%) 0%, rgb(31 163 154 / 0%) 72%);
-    bottom: -220px;
-    left: -150px;
+/* ── Attribution ──────────────────────────────────────── */
+.attribution {
+    position: absolute;
+    bottom: var(--space-3);
+    left: var(--space-4);
+    z-index: 2;
+    font-size: 0.7rem;
+    color: rgb(255 255 255 / 45%);
+}
+
+.attribution a {
+    color: rgb(255 255 255 / 60%);
+    text-decoration: none;
+}
+
+.attribution a:hover {
+    text-decoration: underline;
+    color: rgb(255 255 255 / 80%);
+}
+
+/* ── Right form panel ────────────────────────────────── */
+.form-panel {
+    position: relative;
+    flex: 0 0 min(520px, 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-10) var(--space-8);
+    background: linear-gradient(160deg, #13161d 0%, #0e1117 100%);
+}
+
+/* accent border between panels */
+.form-panel::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10%;
+    bottom: 10%;
+    width: 1px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgb(60 130 246 / 40%) 50%,
+        transparent
+    );
 }
 
 .login-form {
     position: relative;
     display: flex;
     flex-direction: column;
-    width: min(440px, 100%);
+    width: min(400px, 100%);
     gap: var(--space-5);
-    padding: var(--space-10);
-    border-radius: var(--radius-xl);
-    border: 1px solid rgb(87 96 111 / 15%);
-    background: var(--gradient-card);
-    box-shadow: var(--shadow-lifted);
-    backdrop-filter: blur(4px);
 }
 
+/* ── Brand ───────────────────────────────────────────── */
 .brand-block {
     display: flex;
     align-items: center;
     gap: var(--space-4);
+    margin-bottom: var(--space-2);
 }
 
-.tagline {
-    margin: 0;
-    color: var(--color-ink-500);
-    font-size: 0.95rem;
+.logo {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-md);
+    box-shadow: 0 0 24px rgb(60 130 246 / 20%);
 }
 
+/* ── Header ──────────────────────────────────────────── */
 .header {
     display: flex;
     flex-direction: column;
@@ -67,7 +131,7 @@
 
 .header h1 {
     margin: 0;
-    color: var(--color-ink-900);
+    color: #f0f2f5;
     font-size: clamp(1.75rem, 1.2rem + 1.8vw, 2.2rem);
     line-height: 1.1;
     letter-spacing: -0.02em;
@@ -75,38 +139,55 @@
 
 .header p {
     margin: 0;
-    color: var(--color-ink-500);
-    font-size: 0.98rem;
+    color: #7a8399;
+    font-size: 0.96rem;
 }
 
+/* ── Error banner ────────────────────────────────────── */
 .error-banner {
     padding: var(--space-3) var(--space-4);
     border-radius: var(--radius-sm);
-    border: 1px solid rgb(186 42 42 / 25%);
-    background: var(--color-danger-100);
-    color: var(--color-danger-600);
+    border: 1px solid rgb(239 68 68 / 30%);
+    background: rgb(239 68 68 / 8%);
+    color: #f87171;
     font-size: 0.92rem;
 }
 
+/* ── Form fields ─────────────────────────────────────── */
 .field {
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
-    color: var(--color-ink-700);
+    color: #b0b8c9;
     font-size: 0.92rem;
     font-weight: 600;
 }
 
 .field :global(input) {
     width: 100%;
+    background: rgb(255 255 255 / 5%) !important;
+    border: 1px solid rgb(255 255 255 / 10%) !important;
+    color: #f0f2f5 !important;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field :global(input)::placeholder {
+    color: #555d6e !important;
+}
+
+.field :global(input):focus {
+    border-color: rgb(60 130 246 / 50%) !important;
+    box-shadow: 0 0 0 3px rgb(60 130 246 / 15%) !important;
+    outline: none;
 }
 
 .field-error {
     margin-top: calc(var(--space-2) * -1);
-    color: var(--color-danger-600);
+    color: #f87171;
     font-size: 0.85rem;
 }
 
+/* ── Meta row ────────────────────────────────────────── */
 .meta-row {
     display: flex;
     justify-content: flex-end;
@@ -114,7 +195,7 @@
 }
 
 .meta-row a {
-    color: var(--color-accent-700);
+    color: #60a5fa;
     text-decoration: none;
     font-size: 0.92rem;
     font-weight: 600;
@@ -124,9 +205,38 @@
     text-decoration: underline;
 }
 
-.logo {
-    width: 70px;
-    height: 70px;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-soft);
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 860px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .hero-panel {
+        flex: 0 0 240px;
+    }
+
+    .hero-panel::after {
+        background:
+            radial-gradient(ellipse at 50% 50%, transparent 30%, rgb(14 17 23 / 60%) 100%),
+            linear-gradient(to bottom, transparent 50%, #0e1117 100%);
+    }
+
+    .form-panel {
+        flex: 1;
+    }
+
+    .form-panel::before {
+        left: 10%;
+        right: 10%;
+        top: 0;
+        bottom: unset;
+        width: unset;
+        height: 1px;
+        background: linear-gradient(
+            to right,
+            transparent,
+            rgb(60 130 246 / 40%) 50%,
+            transparent
+        );
+    }
 }
