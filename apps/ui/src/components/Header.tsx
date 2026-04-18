@@ -2,6 +2,8 @@ import { NavLink } from 'react-router';
 import logo from '../assets/images/logo.svg';
 import classes from './Header.module.css';
 import UserMenu from './UserMenu';
+import { Button } from '@radix-ui/themes';
+import { Plus } from 'phosphor-react';
 
 export default function Header() {
     return (
@@ -11,6 +13,7 @@ export default function Header() {
                 <h1 className={classes.productName}>QuestLog</h1>
             </NavLink>
             <div className={classes.topNav}>
+                <Button><Plus /> Add Game</Button>
                 <UserMenu />
             </div>
         </header>
