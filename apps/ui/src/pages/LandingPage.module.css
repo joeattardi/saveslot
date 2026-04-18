@@ -37,65 +37,40 @@
     z-index: 1;
     width: min(1080px, 100%);
     margin: 0 auto;
-    padding: clamp(1.5rem, 4vw, 3rem);
+    min-height: 420px;
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 3.5rem);
     border-radius: var(--radius-xl);
-    border: 1px solid rgb(87 96 111 / 15%);
-    background: var(--gradient-card);
-    box-shadow: var(--shadow-lifted);
+    border: 1px solid rgb(255 255 255 / 10%);
+    box-shadow:
+        var(--shadow-lifted),
+        inset 0 1px 0 rgb(255 255 255 / 8%);
     animation: fade-up 450ms ease-out;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-8);
-    align-items: center;
     overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to right, rgb(10 12 18 / 88%) 0%, rgb(10 12 18 / 55%) 55%, rgb(10 12 18 / 25%) 100%),
+        linear-gradient(to top, rgb(10 12 18 / 70%) 0%, transparent 50%);
 }
 
 .hero-content {
     position: relative;
     z-index: 1;
-}
-
-.hero-visual {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.image-glow {
-    position: absolute;
-    inset: -20%;
-    border-radius: 50%;
-    background: radial-gradient(
-        circle at 40% 40%,
-        rgb(31 163 154 / 30%) 0%,
-        rgb(180 80 200 / 18%) 50%,
-        transparent 70%
-    );
-    filter: blur(30px);
-    animation: glow-pulse 4s ease-in-out infinite alternate;
-}
-
-.controller-image {
-    position: relative;
-    width: 100%;
-    max-width: 420px;
-    border-radius: var(--radius-lg);
-    box-shadow:
-        0 20px 60px rgb(31 163 154 / 20%),
-        0 8px 24px rgb(0 0 0 / 12%);
-    animation: float 6s ease-in-out infinite;
-    object-fit: cover;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(1deg); }
-}
-
-@keyframes glow-pulse {
-    from { opacity: 0.6; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1.05); }
+    max-width: 520px;
 }
 
 .brand-row {
@@ -113,10 +88,10 @@
 }
 
 .brand-text {
-    color: var(--color-ink-900);
+    color: #ffffff;
     font-size: 1.75rem;
     font-weight: 800;
-    text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+    text-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
     font-family: 'Orbitron Variable', sans-serif;
     letter-spacing: 0.04em;
 }
@@ -124,18 +99,20 @@
 .hero h1 {
     margin: 0 0 var(--space-4);
     max-width: 18ch;
-    color: var(--color-ink-900);
+    color: #ffffff;
     /* font-family: var(--font-family-display); */
     font-size: clamp(2.15rem, 1.3rem + 3.8vw, 4rem);
     line-height: 1.02;
     letter-spacing: -0.03em;
+    text-shadow: 0 2px 20px rgb(0 0 0 / 40%);
 }
 
-.hero > p {
+.hero-content > p {
     margin: 0;
     max-width: 54ch;
-    color: var(--color-ink-500);
+    color: rgb(255 255 255 / 78%);
     font-size: clamp(1rem, 0.95rem + 0.2vw, 1.1rem);
+    text-shadow: 0 1px 8px rgb(0 0 0 / 30%);
 }
 
 .cta-row {
@@ -169,13 +146,15 @@
 }
 
 .secondary-cta {
-    color: var(--color-accent-700);
-    border: 1px solid rgb(13 123 116 / 30%);
-    background: rgb(255 255 255 / 78%);
+    color: #ffffff;
+    border: 1px solid rgb(255 255 255 / 25%);
+    background: rgb(255 255 255 / 10%);
+    backdrop-filter: blur(8px);
 }
 
 .secondary-cta:hover {
     transform: translateY(-1px);
+    background: rgb(255 255 255 / 18%);
     box-shadow: var(--shadow-soft);
 }
 
@@ -225,16 +204,18 @@
 
 @media (max-width: 900px) {
     .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
+        min-height: 360px;
+        align-items: flex-end;
+    }
+
+    .hero-overlay {
+        background:
+            linear-gradient(to top, rgb(10 12 18 / 92%) 0%, rgb(10 12 18 / 60%) 60%, rgb(10 12 18 / 30%) 100%);
     }
 
     .hero-content {
-        order: 2;
-    }
-
-    .hero-visual {
-        order: 1;
+        text-align: center;
+        max-width: none;
     }
 
     .hero h1 {
@@ -247,10 +228,6 @@
 
     .cta-row {
         justify-content: center;
-    }
-
-    .controller-image {
-        max-width: 320px;
     }
 
     .features-grid {

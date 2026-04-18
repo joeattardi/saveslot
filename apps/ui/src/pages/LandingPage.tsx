@@ -10,6 +10,14 @@ export default function LandingPage() {
             <div className={classes.backdropTwo} aria-hidden="true" />
 
             <section className={classes.hero}>
+                <img
+                    src={controllerImg}
+                    alt=""
+                    aria-hidden="true"
+                    className={classes.heroBg}
+                />
+                <div className={classes.heroOverlay} aria-hidden="true" />
+
                 <div className={classes.heroContent}>
                     <div className={classes.brandRow}>
                         <img src={logo} alt="SaveSlot Logo" className={classes.logo} />
@@ -37,15 +45,6 @@ export default function LandingPage() {
                             Explore features
                         </a>
                     </div>
-                </div>
-
-                <div className={classes.heroVisual}>
-                    <div className={classes.imageGlow} aria-hidden="true" />
-                    <img
-                        src={controllerImg}
-                        alt="Game controller with neon lighting"
-                        className={classes.controllerImage}
-                    />
                 </div>
             </section>
 
