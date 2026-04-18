@@ -5,5 +5,5 @@
 }
 
 .main-content {
-    display: flex;
+    display: grid;
 }
