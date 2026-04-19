@@ -1,4 +1,4 @@
-import { Button, TextField } from '@radix-ui/themes';
+import { Button, Skeleton, TextField } from '@radix-ui/themes';
 import classes from './GameSearch.module.css';
 import { ArrowRight, MagnifyingGlass } from 'phosphor-react';
 import { Controller, useForm } from 'react-hook-form';
@@ -59,6 +59,12 @@ export default function GameSearch() {
             </div>
             <div className={classes.results}>
                 {isSuccess && data?.map((game) => <GameSearchResult key={game.id} game={game} />)}
+                {isFetching && (
+                    <>
+                        <Skeleton width="100%" height="180px" />
+                        <Skeleton width="100%" height="180px" />
+                    </>
+                )}
             </div>
         </div>
     );

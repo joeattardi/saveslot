@@ -1,7 +1,39 @@
 .result {
-    width: 320px;
+    background: var(--color-white);
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 128px 1fr;
+    align-items: center;
+    min-height: 170px;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+    padding: var(--space-4);
 }
 
 .cover {
     width: 128px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-right: 1px solid #eee;
+}
+
+.meta {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-2);
+}
+
+.meta span:not(:last-child)::after {
+    content: ' • ';
+}
+
+.platforms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
 }
