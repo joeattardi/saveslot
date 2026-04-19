@@ -6,7 +6,9 @@ import { database } from '../database/database.js';
 import { games } from '../database/schema.js';
 
 const AddGameBody = Type.Object({
-    name: Type.String()
+    name: Type.String(),
+    igdbId: Type.Optional(Type.Integer()),
+    coverUrl: Type.Optional(Type.String())
 });
 type AddGameBody = Static<typeof AddGameBody>;
 
@@ -30,6 +32,8 @@ export async function gameRoutes(fastify: FastifyInstance) {
 
         await database.insert(games).values({
             name: game.name,
+            igdbId: game.igdbId,
+            coverUrl: game.coverUrl,
             userId: request.session!.user.id
         });
 

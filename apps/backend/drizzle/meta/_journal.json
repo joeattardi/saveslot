@@ -15,6 +15,13 @@
       "when": 1776549238477,
       "tag": "0001_wise_starjammers",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1776599837060,
+      "tag": "0002_reflective_norman_osborn",
+      "breakpoints": true
     }
   ]
 }

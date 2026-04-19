@@ -12,7 +12,11 @@ export default function Game({ game }: GameProps) {
         <Box width="250px">
             <Card>
                 <div className={classes.game}>
-                    <GameController size={64} />
+                    {game.coverUrl ? (
+                        <img src={game.coverUrl} alt={`${game.name} cover`} className={classes.cover} />
+                    ) : (
+                        <GameController size={64} />
+                    )}
                     <h3>{game.name}</h3>
                 </div>
             </Card>
