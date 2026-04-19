@@ -25,10 +25,12 @@ export async function getIgdbAccessToken(): Promise<string> {
     const response = await fetch(url.toString(), { method: 'POST' });
 
     if (!response.ok) {
-        throw new Error(`Failed to fetch IGDB access token: ${response.status} ${response.statusText}`);
+        throw new Error(
+            `Failed to fetch IGDB access token: ${response.status} ${response.statusText}`
+        );
     }
 
-    const data = await response.json() as { access_token: string; expires_in: number };
+    const data = (await response.json()) as { access_token: string; expires_in: number };
 
     // Subtract 60 seconds from expiry to refresh slightly before it expires
     tokenData = {

@@ -12,7 +12,7 @@ export default function UserMenu() {
             fetchOptions: {
                 onSuccess: () => navigate('/')
             }
-        })
+        });
     }
 
     return (
@@ -25,7 +25,9 @@ export default function UserMenu() {
                 </Button>
             </DropdownMenu.Trigger>
             <DropdownMenu.Content>
-                <DropdownMenu.Item onClick={logout}><SignOut /> Log Out</DropdownMenu.Item>
+                <DropdownMenu.Item onClick={logout}>
+                    <SignOut /> Log Out
+                </DropdownMenu.Item>
             </DropdownMenu.Content>
         </DropdownMenu.Root>
     );

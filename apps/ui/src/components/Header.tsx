@@ -13,7 +13,9 @@ export default function Header() {
             </NavLink>
             <div className={classes.topNav}>
                 <Button asChild>
-                    <NavLink to="/app/add"><Plus /> Add Game</NavLink>
+                    <NavLink to="/app/add">
+                        <Plus /> Add Game
+                    </NavLink>
                 </Button>
                 <UserMenu />
             </div>

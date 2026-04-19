@@ -55,7 +55,11 @@ export default function AddGame() {
         <div className={classes.container}>
             <title>Add Game | SaveSlot</title>
 
-            <Section title="Add a Game" description="Search for a game to add to your collection.">
+            <h1>Add a Game</h1>
+
+            <GameSearch onSelect={handleSelect} selectedGame={selectedGame} />
+
+            {/* <Section title="Add a Game" description="Search for a game to add to your collection.">
                 <form className={classes.form} onSubmit={handleSubmit} noValidate>
                     <GameSearch onSelect={handleSelect} selectedGame={selectedGame} />
                     {selectedGame && (
@@ -77,7 +81,7 @@ export default function AddGame() {
                         Add game
                     </Button>
                 </form>
-            </Section>
+            </Section> */}
         </div>
     );
 }

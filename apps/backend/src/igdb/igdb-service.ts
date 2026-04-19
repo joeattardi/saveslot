@@ -36,9 +36,9 @@ export async function searchGames(query: string, limit = 10): Promise<IgdbGame[]
         throw new Error(`IGDB API request failed: ${response.status} ${response.statusText}`);
     }
 
-    const games = await response.json() as IgdbApiGame[];
+    const games = (await response.json()) as IgdbApiGame[];
 
-    return games.map(game => ({
+    return games.map((game) => ({
         id: game.id,
         name: game.name,
         coverUrl: game.cover

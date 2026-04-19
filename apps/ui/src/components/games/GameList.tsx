@@ -24,18 +24,24 @@ export default function GameList() {
         <ul className={classes.gameList}>
             {result.isLoading && (
                 <>
-                    <li><GameSkeleton /></li>
-                    <li><GameSkeleton /></li>
-                    <li><GameSkeleton /></li>
+                    <li>
+                        <GameSkeleton />
+                    </li>
+                    <li>
+                        <GameSkeleton />
+                    </li>
+                    <li>
+                        <GameSkeleton />
+                    </li>
                 </>
             )}
-            {result.isSuccess && result.data.map(game => (
-                <Game key={game.id} game={game} />
-            ))}
+            {result.isSuccess && result.data.map((game) => <Game key={game.id} game={game} />)}
             {result.isSuccess && result.data.length === 0 && (
                 <li className={classes.emptyState}>
                     <GameController size={128} className={classes.emptyIcon} />
-                    <p>No games found. <NavLink to="/app/add">Add a game</NavLink> to get started!</p>
+                    <p>
+                        No games found. <NavLink to="/app/add">Add a game</NavLink> to get started!
+                    </p>
                 </li>
             )}
         </ul>

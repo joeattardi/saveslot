@@ -23,20 +23,24 @@ export async function gameRoutes(fastify: FastifyInstance) {
         reply.send(userGames);
     });
 
-    app.post('/api/games', {
-        schema: {
-            body: AddGameBody
+    app.post(
+        '/api/games',
+        {
+            schema: {
+                body: AddGameBody
+            }
+        },
+        async (request, reply) => {
+            const game = request.body;
+
+            await database.insert(games).values({
+                name: game.name,
+                igdbId: game.igdbId,
+                coverUrl: game.coverUrl,
+                userId: request.session!.user.id
+            });
+
+            reply.status(201).send({ message: 'Game added successfully' });
         }
-    }, async (request, reply) => {
-        const game = request.body;
-
-        await database.insert(games).values({
-            name: game.name,
-            igdbId: game.igdbId,
-            coverUrl: game.coverUrl,
-            userId: request.session!.user.id
-        });
-
-        reply.status(201).send({ message: 'Game added successfully' });
-    });
+    );
 }

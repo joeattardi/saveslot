@@ -21,7 +21,11 @@
     height: 430px;
     right: -120px;
     top: -80px;
-    background: radial-gradient(circle at center, rgb(214 108 56 / 26%) 0%, rgb(214 108 56 / 0%) 72%);
+    background: radial-gradient(
+        circle at center,
+        rgb(214 108 56 / 26%) 0%,
+        rgb(214 108 56 / 0%) 72%
+    );
 }
 
 .backdrop-two {
@@ -29,7 +33,11 @@
     height: 520px;
     left: -180px;
     bottom: -240px;
-    background: radial-gradient(circle at center, rgb(31 163 154 / 24%) 0%, rgb(31 163 154 / 0%) 72%);
+    background: radial-gradient(
+        circle at center,
+        rgb(31 163 154 / 24%) 0%,
+        rgb(31 163 154 / 0%) 72%
+    );
 }
 
 .hero {
@@ -63,7 +71,12 @@
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(to right, rgb(10 12 18 / 88%) 0%, rgb(10 12 18 / 55%) 55%, rgb(10 12 18 / 25%) 100%),
+        linear-gradient(
+            to right,
+            rgb(10 12 18 / 88%) 0%,
+            rgb(10 12 18 / 55%) 55%,
+            rgb(10 12 18 / 25%) 100%
+        ),
         linear-gradient(to top, rgb(10 12 18 / 70%) 0%, transparent 50%);
 }
 
@@ -127,7 +140,9 @@
     text-decoration: none;
     font-weight: 700;
     font-size: 0.95rem;
-    transition: transform 130ms ease, box-shadow 130ms ease;
+    transition:
+        transform 130ms ease,
+        box-shadow 130ms ease;
 }
 
 .primary-cta {
@@ -204,8 +219,12 @@
     }
 
     .hero-overlay {
-        background:
-            linear-gradient(to top, rgb(10 12 18 / 92%) 0%, rgb(10 12 18 / 60%) 60%, rgb(10 12 18 / 30%) 100%);
+        background: linear-gradient(
+            to top,
+            rgb(10 12 18 / 92%) 0%,
+            rgb(10 12 18 / 60%) 60%,
+            rgb(10 12 18 / 30%) 100%
+        );
     }
 
     .hero-content {

@@ -11,7 +11,8 @@ export default function NotFound() {
                 <p className={classes.errorCode}>404</p>
                 <h1 className={classes.title}>Save not found</h1>
                 <p className={classes.message}>
-                    Looks like this page wandered off the map. Let's get you back to familiar territory.
+                    Looks like this page wandered off the map. Let's get you back to familiar
+                    territory.
                 </p>
                 <NavLink to="/" className={classes.homeLink}>
                     ← Back to Home

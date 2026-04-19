@@ -24,7 +24,11 @@
     top: -140px;
     left: 50%;
     translate: -70% 0;
-    background: radial-gradient(circle at center, rgb(214 108 56 / 22%) 0%, rgb(214 108 56 / 0%) 72%);
+    background: radial-gradient(
+        circle at center,
+        rgb(214 108 56 / 22%) 0%,
+        rgb(214 108 56 / 0%) 72%
+    );
 }
 
 .glow-two {
@@ -32,7 +36,11 @@
     height: 460px;
     bottom: -160px;
     right: -100px;
-    background: radial-gradient(circle at center, rgb(31 163 154 / 20%) 0%, rgb(31 163 154 / 0%) 72%);
+    background: radial-gradient(
+        circle at center,
+        rgb(31 163 154 / 20%) 0%,
+        rgb(31 163 154 / 0%) 72%
+    );
 }
 
 .card {
@@ -91,7 +99,9 @@
     font-size: 0.95rem;
     text-decoration: none;
     box-shadow: var(--shadow-soft);
-    transition: opacity 180ms ease, transform 180ms ease;
+    transition:
+        opacity 180ms ease,
+        transform 180ms ease;
 }
 
 .home-link:hover {

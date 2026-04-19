@@ -10,13 +10,17 @@ const SearchQuerystring = Type.Object({
 export async function igdbRoutes(fastify: FastifyInstance) {
     const app = fastify.withTypeProvider<TypeBoxTypeProvider>();
 
-    app.get('/api/igdb/games/search', {
-        schema: {
-            querystring: SearchQuerystring
+    app.get(
+        '/api/igdb/games/search',
+        {
+            schema: {
+                querystring: SearchQuerystring
+            }
+        },
+        async (request, reply) => {
+            const { query } = request.query;
+            const games = await searchGames(query);
+            return reply.send(games);
         }
-    }, async (request, reply) => {
-        const { query } = request.query;
-        const games = await searchGames(query);
-        return reply.send(games);
-    });
+    );
 }

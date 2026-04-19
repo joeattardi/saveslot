@@ -16,9 +16,7 @@ export default function Section({ title, description, children }: SectionProps) 
                         <h2 className={classes.title}>{title}</h2>
                         {description && <p className={classes.description}>{description}</p>}
                     </header>
-                    <div className={classes.body}>
-                        {children}
-                    </div>
+                    <div className={classes.body}>{children}</div>
                 </section>
             </Card>
         </Box>

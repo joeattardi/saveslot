@@ -1,27 +1,27 @@
 {
-  "version": "7",
-  "dialect": "postgresql",
-  "entries": [
-    {
-      "idx": 0,
-      "version": "7",
-      "when": 1776393679742,
-      "tag": "0000_puzzling_hellcat",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1776549238477,
-      "tag": "0001_wise_starjammers",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1776599837060,
-      "tag": "0002_reflective_norman_osborn",
-      "breakpoints": true
-    }
-  ]
+    "version": "7",
+    "dialect": "postgresql",
+    "entries": [
+        {
+            "idx": 0,
+            "version": "7",
+            "when": 1776393679742,
+            "tag": "0000_puzzling_hellcat",
+            "breakpoints": true
+        },
+        {
+            "idx": 1,
+            "version": "7",
+            "when": 1776549238477,
+            "tag": "0001_wise_starjammers",
+            "breakpoints": true
+        },
+        {
+            "idx": 2,
+            "version": "7",
+            "when": 1776599837060,
+            "tag": "0002_reflective_norman_osborn",
+            "breakpoints": true
+        }
+    ]
 }

@@ -91,12 +91,7 @@
     top: 10%;
     bottom: 10%;
     width: 1px;
-    background: linear-gradient(
-        to bottom,
-        transparent,
-        rgb(87 96 111 / 20%) 50%,
-        transparent
-    );
+    background: linear-gradient(to bottom, transparent, rgb(87 96 111 / 20%) 50%, transparent);
 }
 
 .login-form {
@@ -218,11 +213,6 @@
         bottom: unset;
         width: unset;
         height: 1px;
-        background: linear-gradient(
-            to right,
-            transparent,
-            rgb(87 96 111 / 20%) 50%,
-            transparent
-        );
+        background: linear-gradient(to right, transparent, rgb(87 96 111 / 20%) 50%, transparent);
     }
 }

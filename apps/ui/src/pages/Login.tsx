@@ -61,9 +61,13 @@ export default function Login() {
                 <div className={classes.heroGlow} aria-hidden="true" />
                 <small className={classes.attribution}>
                     Photo by{' '}
-                    <a href="https://unsplash.com/@michal_ilenda?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Michal Ilenda</a>
-                    {' '}on{' '}
-                    <a href="https://unsplash.com/photos/black-sony-ps-4-game-controller-UzwsrV3bFdU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+                    <a href="https://unsplash.com/@michal_ilenda?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+                        Michal Ilenda
+                    </a>{' '}
+                    on{' '}
+                    <a href="https://unsplash.com/photos/black-sony-ps-4-game-controller-UzwsrV3bFdU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+                        Unsplash
+                    </a>
                 </small>
             </div>
 

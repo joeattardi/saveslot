@@ -1,14 +1,11 @@
-import { TextField, Spinner } from '@radix-ui/themes';
-import { GameController, MagnifyingGlass } from 'phosphor-react';
-import { useState, useRef, useEffect } from 'react';
+import { Button, TextField } from '@radix-ui/themes';
+import classes from './GameSearch.module.css';
+import { ArrowRight, MagnifyingGlass } from 'phosphor-react';
+import { Controller, useForm } from 'react-hook-form';
 import { useQuery } from '@tanstack/react-query';
 import type { IgdbGame } from '../../types/igdb';
-import classes from './GameSearch.module.css';
-
-interface GameSearchProps {
-    onSelect: (game: IgdbGame) => void;
-    selectedGame?: IgdbGame | null;
-}
+import { useState } from 'react';
+import GameSearchResult from './GameSearchResult';
 
 async function searchIgdbGames(query: string): Promise<IgdbGame[]> {
     const response = await fetch(`/api/igdb/games/search?query=${encodeURIComponent(query)}`);
@@ -18,83 +15,51 @@ async function searchIgdbGames(query: string): Promise<IgdbGame[]> {
     return response.json();
 }
 
-export default function GameSearch({ onSelect, selectedGame }: GameSearchProps) {
-    const [inputValue, setInputValue] = useState('');
-    const [searchQuery, setSearchQuery] = useState('');
-    const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-    useEffect(() => {
-        return () => {
-            if (debounceRef.current) {
-                clearTimeout(debounceRef.current);
-            }
-        };
-    }, []);
-
-    const { data: results, isFetching } = useQuery({
-        queryKey: ['igdb-search', searchQuery],
-        queryFn: () => searchIgdbGames(searchQuery),
-        enabled: searchQuery.length >= 2,
-        staleTime: 60_000
+export default function GameSearch() {
+    const { control, handleSubmit } = useForm({
+        defaultValues: {
+            searchQuery: ''
+        }
     });
 
-    function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
-        const value = e.target.value;
-        setInputValue(value);
+    const [submittedQuery, setSubmittedQuery] = useState('');
 
-        if (debounceRef.current) {
-            clearTimeout(debounceRef.current);
-        }
+    const { data, isSuccess, isFetching } = useQuery({
+        queryKey: ['igdb-search', submittedQuery],
+        queryFn: () => searchIgdbGames(submittedQuery),
+        enabled: submittedQuery.length > 0
+    });
 
-        debounceRef.current = setTimeout(() => {
-            setSearchQuery(value.trim());
-        }, 400);
+    function searchGames(data: { searchQuery: string }) {
+        setSubmittedQuery(data.searchQuery.trim());
     }
 
-    const showResults = searchQuery.length >= 2;
-
     return (
-        <div className={classes.searchContainer}>
-            <TextField.Root
-                placeholder="Search for a game..."
-                value={inputValue}
-                onChange={handleInputChange}
-                autoFocus
-            >
-                <TextField.Slot>
-                    {isFetching ? <Spinner size="1" /> : <MagnifyingGlass size={16} />}
-                </TextField.Slot>
-            </TextField.Root>
-
-            {showResults && (
-                <ul className={classes.searchResults}>
-                    {results && results.length === 0 && (
-                        <li className={classes.noResults}>No games found</li>
-                    )}
-                    {results && results.map(game => (
-                        <li key={game.id}>
-                            <button
-                                type="button"
-                                className={`${classes.resultItem}${selectedGame?.id === game.id ? ` ${classes.selected}` : ''}`}
-                                onClick={() => onSelect(game)}
-                            >
-                                {game.coverUrl ? (
-                                    <img
-                                        src={game.coverUrl}
-                                        alt={`${game.name} cover`}
-                                        className={classes.coverThumbnail}
-                                    />
-                                ) : (
-                                    <div className={classes.coverPlaceholder}>
-                                        <GameController size={20} />
-                                    </div>
-                                )}
-                                <span className={classes.resultName}>{game.name}</span>
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-            )}
+        <div className={classes.gameSearch}>
+            <div className={classes.searchContainer}>
+                <form onSubmit={handleSubmit(searchGames)} noValidate>
+                    <Controller
+                        name="searchQuery"
+                        control={control}
+                        rules={{ required: 'Search query is required' }}
+                        render={({ field }) => (
+                            <TextField.Root {...field} size="3" placeholder="Search for games...">
+                                <TextField.Slot>
+                                    <MagnifyingGlass />
+                                </TextField.Slot>
+                                <TextField.Slot>
+                                    <Button loading={isFetching} type="submit" size="1">
+                                        <ArrowRight />
+                                    </Button>
+                                </TextField.Slot>
+                            </TextField.Root>
+                        )}
+                    />
+                </form>
+            </div>
+            <div className={classes.results}>
+                {isSuccess && data?.map((game) => <GameSearchResult key={game.id} game={game} />)}
+            </div>
         </div>
     );
 }
