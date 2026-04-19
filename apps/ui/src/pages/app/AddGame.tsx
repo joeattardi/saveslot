@@ -1,17 +1,29 @@
-import { Box, Button, Card } from '@radix-ui/themes';
+import { Button } from '@radix-ui/themes';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
-import classes from './AddGame.module.css';
-import Section from '../../components/ui/Section';
 import FormField from '../../components/ui/FormField';
-import Label from '../../components/ui/Label';
 import Input from '../../components/ui/Input';
+import Label from '../../components/ui/Label';
+import Section from '../../components/ui/Section';
+import classes from './AddGame.module.css';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 interface AddGameFormData {
     name: string;
 }
 
+function addGame(game: AddGameFormData) {
+    return fetch('/api/games', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(game)
+    });
+}
+
 export default function AddGame() {
+    const queryClient = useQueryClient();
     const navigate = useNavigate();
     const {
         handleSubmit,
@@ -21,19 +33,16 @@ export default function AddGame() {
         defaultValues: { name: '' }
     });
 
-    async function onSubmit(data: AddGameFormData) {
-        // TODO: call API to persist game
-        console.log('Add game:', data);
+    const mutation = useMutation({
+        mutationFn: addGame,
+        async onSuccess() {
+            queryClient.invalidateQueries({ queryKey: ['games'] });
+            navigate('/app');
+        }
+    });
 
-        await fetch('/api/games', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        navigate('/app');
+    function onSubmit(data: AddGameFormData) {
+        mutation.mutate(data);
     }
 
     return (

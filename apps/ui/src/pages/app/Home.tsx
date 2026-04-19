@@ -1,21 +1,11 @@
-import { useEffect } from 'react';
+import GameList from '../../components/games/GameList';
 import classes from './Home.module.css';
 
 export default function Home() {
-    useEffect(() => {
-        fetch('/api/games')
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((error) => {
-                console.error('Error fetching games:', error);
-            });
-    }, []);
-
     return (
         <div className={classes.container}>
-           
+            <h1>My Games</h1>
+            <GameList />
         </div>
     );
 }

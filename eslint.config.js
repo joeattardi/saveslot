@@ -4,6 +4,7 @@ import tseslint from 'typescript-eslint';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import prettierConfig from 'eslint-config-prettier';
+import query from '@tanstack/eslint-plugin-query';
 
 export default tseslint.config(
     {
@@ -31,11 +32,13 @@ export default tseslint.config(
         },
         plugins: {
             'react-hooks': reactHooks,
-            'react-refresh': reactRefresh
+            'react-refresh': reactRefresh,
+            '@tanstack/query': query
         },
         rules: {
             ...reactHooks.configs.recommended.rules,
-            'react-refresh/only-export-components': ['warn', { allowConstantExport: true }]
+            'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+            ...query.configs.recommended.rules
         }
     },
     prettierConfig

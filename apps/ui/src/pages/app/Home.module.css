@@ -1,4 +1,4 @@
 .container {
-    padding: var(--space-6);
     background: var(--gradient-app);
+    width: 100%;
 }

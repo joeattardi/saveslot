@@ -19,6 +19,7 @@
     },
     "devDependencies": {
         "@eslint/js": "^10.0.1",
+        "@tanstack/eslint-plugin-query": "^5.99.1",
         "concurrently": "^9.2.1",
         "eslint": "^10.2.0",
         "eslint-config-prettier": "^10.1.8",
