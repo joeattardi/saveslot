@@ -1,6 +1,7 @@
 import classes from './GameSearchResult.module.css';
 import type { IgdbGame } from '../../types/igdb';
 import { Badge } from '@radix-ui/themes';
+import { GameController } from 'phosphor-react';
 
 interface GameSearchResultProps {
     game: IgdbGame;
@@ -15,7 +16,13 @@ const releaseDateFormat = new Intl.DateTimeFormat(undefined, {
 export default function GameSearchResult({ game }: GameSearchResultProps) {
     return (
         <div className={classes.result}>
-            <img src={game.coverUrl} alt={`${game.name} cover`} className={classes.cover} />
+            {game.coverUrl ? (
+                <img src={game.coverUrl} alt={`${game.name} cover`} className={classes.cover} />
+            ) : (
+                <div className={classes.coverPlaceholder} aria-hidden="true">
+                    <GameController weight="duotone" className={classes.coverPlaceholderIcon} />
+                </div>
+            )}
             <div className={classes.details}>
                 <h3>{game.name}</h3>
                 <div className={classes.meta}>

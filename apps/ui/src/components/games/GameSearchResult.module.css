@@ -17,9 +17,32 @@
 
 .cover {
     width: 128px;
+    height: 100%;
+    object-fit: cover;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-right: 1px solid #eee;
+}
+
+.coverPlaceholder {
+    width: 128px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-right: 1px solid #eee;
+    background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.8), transparent 55%),
+        linear-gradient(160deg, #10324f 0%, #185a6f 48%, #f3a64f 100%);
+}
+
+.coverPlaceholderIcon {
+    width: 72px;
+    height: 72px;
+    color: rgba(255, 255, 255, 0.92);
+    filter: drop-shadow(0 10px 18px rgba(11, 31, 43, 0.28));
 }
 
 .meta {
